@@ -13,6 +13,12 @@
 #define ONBOARD_SW  7    // Switch GP7
 
 int current_LED = LOW;
+int currentButtonState = HIGH;
+int previousButtonState = HIGH;
+int currentMode;
+
+bool toggleMode = false;
+unsigned long buttonPressStartTime = 0;
 
 void setup() {
    Serial.begin(115200); //set up serial library baud rate to 115200
@@ -26,12 +32,49 @@ void loop() {
    current_LED = (current_LED == HIGH) ? LOW: HIGH;
    digitalWrite(ONBOARD_LED, current_LED);
    
-   if (digitalRead(ONBOARD_SW) == LOW) {  // Switch is asserted Low (Active Low)
-      delay(1);
+
+   currentButtonState = digitalRead(ONBOARD_SW);
+
+   if((currentButtonState == LOW) && (previousButtonState == HIGH)) {
+     currentMode = (currentMode >= 3) ? 0 : currentMode + 1;
+     if (currentButtonState == LOW) {
+       buttonPressStartTime = millis();
+     } else {
+       if (millis() - buttonPressStartTime >= 3000) { 
+         toggleMode = !toggleMode; 
+         if (toggleMode) {
+           currentMode = -1; 
+           Serial.println("Toggle Mode");
+         } else {
+           currentMode = 0; 
+           Serial.println("Blinking Mode");
+         }
+       }
+      }
    }
-   else {
-      delay(50);
-   }
+  previousButtonState = currentButtonState;
+  if(toggleMode) {
+    digitalWrite(ONBOARD_LED, currentButtonState);
+  } else {
+      if(currentMode == 0) {
+        current_LED = ((millis() / 1000) % 2 == 0) ? LOW : HIGH;
+        // delay(1000);
+      } else if(currentMode == 1) {
+        current_LED = ((millis() / 500) % 2 == 0) ? LOW : HIGH;
+        // delay(500);
+      } else if(currentMode == 2) {
+        current_LED = ((millis() / 100) % 2 == 0) ? LOW : HIGH;
+        // delay(100);
+      } else {  // Switch is asserted Low (Active Low)
+          current_LED = LOW;
+      }
+  }
+  
+
+
+
+  // add another state to hold it to change from toggle mode to static mode
+  digitalWrite(ONBOARD_LED, current_LED);
 }
-                    
+                
                 
