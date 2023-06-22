@@ -23,7 +23,7 @@
 #define OLED_I2CAADR 0x3C
 
 #define NEO_PIXEL 20
-#define LED_COUNT 3
+#define LED_COUNT 21
 
 Adafruit_NeoPixel strip(LED_COUNT, NEO_PIXEL, NEO_GRB + NEO_KHZ800);
 SSD1306AsciiWire oled(Wire1);
@@ -85,13 +85,22 @@ void setup() {
 void loop() {
     int uDistance = ping_mm();
     if (uDistance > 0) {
-        Serial.print("Range <-> Distance(mm): ");
-        Serial.println(ping_mm());
+        oled.clear();
+        oled.println("Range <->");
+        oled.print("Distance(mm): " );
+        oled.println(ping_mm());
+    }
+    for(int i = 0; i < 21; i++) {
+      if(i % 3 == 0) {
+        strip.setPixelColor(i, strip.Color(random(255),uDistance,uDistance));
+      } else if(i % 3 == 1) {
+        strip.setPixelColor(i, strip.Color(uDistance,random(255),uDistance));
+      } else if(i % 3 == 2) {
+        strip.setPixelColor(i, strip.Color(uDistance,uDistance,random(255)));
+      }
     }
 
-    strip.setPixelColor(0, strip.Color(random(255),random(255),random(255)));
-    strip.setPixelColor(1, strip.Color(random(255),random(255),random(255)));
-    strip.setPixelColor(2, strip.Color(random(255),random(255),random(255)));
+    
     strip.show(); // This sends the updated pixel color to the hardware.
   
     delay(500);

@@ -88,9 +88,9 @@ void loop() {
         delay(500);
     }  
     if(uDistance <= 10) {
-      playTone(NOTE_F4, 500);
-      playTone(NOTE_F4, 500);
-      playTone(NOTE_F4, 500);
+      // playTone(NOTE_F4, 500);
+      // playTone(NOTE_F4, 500);
+      // playTone(NOTE_F4, 500);
     }
 }
                     
