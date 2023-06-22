@@ -34,23 +34,24 @@ void loop() {
    
 
    currentButtonState = digitalRead(ONBOARD_SW);
-
    if((currentButtonState == LOW) && (previousButtonState == HIGH)) {
      currentMode = (currentMode >= 3) ? 0 : currentMode + 1;
+     millis() = 0;
      if (currentButtonState == LOW) {
        buttonPressStartTime = millis();
-     } else {
-       if (millis() - buttonPressStartTime >= 3000) { 
-         toggleMode = !toggleMode; 
-         if (toggleMode) {
-           currentMode = -1; 
-           Serial.println("Toggle Mode");
-         } else {
-           currentMode = 0; 
-           Serial.println("Blinking Mode");
-         }
-       }
+     } 
+     Serial.println(millis());
+      if (buttonPressStartTime >= 5000) { 
+        toggleMode = !toggleMode; 
+        if (toggleMode) {
+          currentMode = -1; 
+          Serial.println("Toggle Mode");
+        } else {
+          currentMode = 0; 
+          Serial.println("Blinking Mode");
+        }
       }
+      
    }
   previousButtonState = currentButtonState;
   if(toggleMode) {
