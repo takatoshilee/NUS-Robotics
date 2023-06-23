@@ -38,6 +38,11 @@
 #define MotorB_1 10
 #define MotorB_2 11
 
+#define MOTOR_A_PIN_1 8
+#define MOTOR_A_PIN_2 9
+#define MOTOR_B_PIN_1 10
+#define MOTOR_B_PIN_2 11
+
 
 
 bool isRobotSpinning = false;
@@ -95,73 +100,90 @@ void setup() {
 void loop() {
   if (digitalRead(ONBOARD_SW) == LOW) {
     isRobotSpinning = !isRobotSpinning;
-      //BabyShark Theme
-    playTone(NOTE_D5, 400);
-    playTone(NOTE_E5, 400);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);     
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250);
     
-    playTone(NOTE_D5, 250);
-    playTone(NOTE_E5, 250);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);     
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250); 
+    for(int i = 0; i < 10; i++) {
+       playTone(NOTE_A7, 50);
+        delay(50);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      //BabyShark Theme
+    // playTone(NOTE_D5, 400);
+    // playTone(NOTE_E5, 400);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);     
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250);
+    
+    // playTone(NOTE_D5, 250);
+    // playTone(NOTE_E5, 250);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);     
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250); 
 
-    playTone(NOTE_D5, 250);
-    playTone(NOTE_E5, 250);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 250);     
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_G5, 125);
-    playTone(NOTE_G5, 250);
-    playTone(NOTE_A5, 250);
-    playTone(NOTE_G5, 255);
-    playTone(NOTE_FS5, 1000);
+    // playTone(NOTE_D5, 250);
+    // playTone(NOTE_E5, 250);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 250);     
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_G5, 125);
+    // playTone(NOTE_G5, 250);
+    // playTone(NOTE_A5, 250);
+    // playTone(NOTE_G5, 255);
+    // playTone(NOTE_FS5, 1000);
     
     //Old McDonalds
 //     {F4,500} {F4,500} {F4,500} {C4,500}{D4,500} {D4,500} {C4,1000}
 // {A4,500} {A4,500} {G4,500} {G4,500} {F4,1500} {C4,500} 
 // {F4,500} {F4,500} {F4,500} {C4,500}{D4,500} {D4,500} {C4,1000} 
 // {A4,500} {A4,500} {G4,500} {G4,500} {F4,1500} 
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_C4, 500);
-    playTone(NOTE_D4, 500);     
-    playTone(NOTE_D4, 500);
-    playTone(NOTE_C4, 1000);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_C4, 500);
+    // playTone(NOTE_D4, 500);     
+    // playTone(NOTE_D4, 500);
+    // playTone(NOTE_C4, 1000);
 
-    playTone(NOTE_A4, 500);
-    playTone(NOTE_A4, 500);
-    playTone(NOTE_G4, 500);
-    playTone(NOTE_G4, 500);
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_C4, 1000);
+    // playTone(NOTE_A4, 500);
+    // playTone(NOTE_A4, 500);
+    // playTone(NOTE_G4, 500);
+    // playTone(NOTE_G4, 500);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_C4, 1000);
 
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_F4, 500);
-    playTone(NOTE_C4, 500);     
-    playTone(NOTE_D4, 500);
-    playTone(NOTE_D4, 500);
-    playTone(NOTE_C4, 1000);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_F4, 500);
+    // playTone(NOTE_C4, 500);     
+    // playTone(NOTE_D4, 500);
+    // playTone(NOTE_D4, 500);
+    // playTone(NOTE_C4, 1000);
 
-    playTone(NOTE_A4, 500);
-    playTone(NOTE_A4, 500);
-    playTone(NOTE_G4, 500);
-    playTone(NOTE_G4, 500);
-    playTone(NOTE_F4, 1500);
+    // playTone(NOTE_A4, 500);
+    // playTone(NOTE_A4, 500);
+    // playTone(NOTE_G4, 500);
+    // playTone(NOTE_G4, 500);
+    // playTone(NOTE_F4, 1500);
 
 
   } else if (digitalRead(ENDSTP_SW_A) == LOW) {
